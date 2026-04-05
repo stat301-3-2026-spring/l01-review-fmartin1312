@@ -44,8 +44,14 @@ Provide a brief outline/overview of the steps involved in a supervised machine l
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
-
+1. Evaluate data set and skim target variable
+2. Split data into training and testing set (also folded set if applicable)
+3. Make recipe(s) using the training set and verify they work
+4. Specify desired models and workflows 
+5. Fit workflows to training data set (if using folded data, fit to folded data set)
+6. Compare performance metrics of all fitted models and determine which has the best performance
+7. If using folded data, fit best model to the entire training data set
+8. Compare fitted model to testing data set via the performance metric to evaluate overall model performance. 
 :::
 
 ### Question 2
@@ -55,8 +61,9 @@ Explain the difference between supervised and unsupervised learning.
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+**Supervised:** uses labeled data sets to train data to classify data and accurately predict outcomes. 
 
+**Unsupervised:** uses unlabeled data sets to discover hidden patterns and clusters 
 :::
 
 ### Question 3 
@@ -68,7 +75,7 @@ In general, we can classify a model by its purpose into 1 of the 3 categories be
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+These models summarize historical data to explain past events and why they might've occurred. 
 
 :::
 
@@ -77,8 +84,7 @@ YOUR SOLUTION HERE
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
-
+These models use sample data make conclusions about larger populations. 
 :::
 
 #### Predictive Models
@@ -86,7 +92,7 @@ YOUR SOLUTION HERE
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+These models use past data to predict future outcomes. 
 
 :::
 
@@ -101,7 +107,7 @@ What does it mean to be a mechanistic model?
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+They use physical laws to explain why a system behaves a certain way based on its internal mechanisms. 
 
 :::
 
@@ -112,7 +118,7 @@ What does it mean to be an empirically driven model?
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+They use observed data to describe how a system behaves by identifying patterns. 
 
 :::
 
@@ -123,8 +129,7 @@ How does the mechanistic and empirically driven model terminology relate to the 
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
-
+Mechanistic models require a parametric approach where fixed mathematical formulas represent known processes. In contrast, empirically driven models often utilize nonparametric methods to flexibly map relationships without assuming a specific shape beforehand. Essentially, mechanistic-parametric models focus on explaining the "why" through theory, while empirical-nonparametric models focus on predicting the "what" through data.
 :::
 
 #### Part (d)
@@ -134,7 +139,7 @@ In general, is a mechanistic or empirically driven model easier to interpret? Ex
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+In general, a mechanistic model is significantly easier to interpret because every variable and parameter corresponds to a real-world process. Because the model is built on a "why",  you can look at the results and understand the physical or psychological cause behind the effect. Empirically driven models, particularly nonparametric ones, predict outcomes by finding complex correlations in the data, but they don't necessarily explain the underlying logic.
 
 :::
 
@@ -145,7 +150,7 @@ How does mechanistic and empirically driven model terminology relate to the idea
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+Mechanistic models have low flexibility because they are constrained by rigid theoretical rules, making them less likely to fit noise, but potentially missing complex patterns. Empirically driven models have high flexibility because they lack a preconceived shape, allowing them to adapt closely to the data.
 
 :::
 
@@ -156,7 +161,7 @@ Describe the bias-variance trade-off when considering the use of a mechanistic o
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+Mechanistic models typically exhibit high bias and low variance because they rely on rigid theoretical assumptions that remain stable even if the data changes, though they risk underfitting by being too simple. In contrast, empirically driven models favor low bias and high variance, offering the flexibility to capture complex patterns while risking overfitting by becoming too sensitive to random noise in a specific dataset. The goal is to find a balance that minimizes total error by selecting the model type that best fits the complexity of the underlying system.
 
 :::
 
@@ -167,8 +172,7 @@ Explain the difference between a regression and classification machine learning 
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
-
+Regression focuses on predicting a quantity along a continuous numerical spectrum, such as estimating a specific price or measurement. Classification focuses on predicting a qualitative label by sorting data into distinct, predefined categories.
 :::
 
 ### Question 6 
@@ -178,8 +182,7 @@ When splitting the data, why is it useful to stratify by the outcome/target vari
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
-
+Stratifying by the outcome variable ensures that the statistical distribution of the target remains the same in both the training and testing sets. This prevents sampling bias, where one set becomes unrepresentative of the overall population, particularly when dealing with rare categories or extreme numerical values. It leads to more stable training and a more honest assessment of the model's real-world accuracy.
 :::
 
 ### Question 7 
@@ -189,7 +192,7 @@ Briefly describe how v-fold cross validation with repeats is used to estimate te
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+V-fold cross-validation with repeats partitions the data into a specifc number of groups, training the model that specific number of times so every point is used for both training and assessment, then repeats this entire process multiple times with different shuffles. This method is used because it minimizes the variance associated with a single random split, providing a more robust and honest estimate of the model's error. By averaging the RMSE across many different versions of the data, there is higher confidence that the model’s performance is consistent rather than a result of a lucky split.
 
 :::
 
@@ -200,7 +203,7 @@ When might we use a bootstrap resampling procedure instead of v-fold cross valid
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+Bootstrap resampling is used over v-fold cross-validation when working with small datasets where a standard split would leave too few observations for stable training. Bootstrapping is also preferred when you need a robust estimate of uncertainty, such as a confidence interval, because it provides a smoother distribution of the model's performance. While cross-validation is better for unbiased point estimates, bootstrapping offers greater stability and statistical detail in high-uncertainty environments.
 
 :::
 
@@ -211,8 +214,7 @@ Briefly describe model tuning and why we use it.
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
-
+Model tuning is the process of systematically testing different hyperparameter values to find the sweet spot for a specific dataset. It is used primarily to prevent overfitting and underfitting by calibrating the model's complexity to match the data's true signals. Tuning transforms a generic algorithm into a specialized tool that provides the most accurate and stable predictions possible.
 :::
 
 ### Question 10 
@@ -222,7 +224,7 @@ What are two common performance metrics when dealing with a regression ML proble
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+RMSE and MAE
 
 :::
 
@@ -231,7 +233,7 @@ What are two common performance metrics when dealing with a classification ML pr
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+Accuracy and AUC-ROC
 
 :::
 
@@ -246,7 +248,7 @@ A company with a subscription based service (for example Netflix, Disney+, New Y
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+**Inferential** because the goal here is to understand the relationship between a specific predictor (service calls) and the response (churn). The company isn't just asking if someone will leave, but why they might leave and how much a specific factor contributes to that decision.
 
 :::
 
@@ -255,7 +257,7 @@ YOUR SOLUTION HERE
 ::: {.callout-tip icon="false"}
 ## Solution
 
-YOUR SOLUTION HERE
+**Prediction** because the goal here is to produce the most accurate estimate for an individual customer. The company wants a probability score so they can take action (like sending a discount code), regardless of the specific combination of reasons behind it.
 
 :::
 
